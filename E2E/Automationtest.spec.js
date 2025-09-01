@@ -49,6 +49,7 @@ test.describe('verify the automation',()=>{
         await expect(page.locator("//a[normalize-space()='Home']")).toBeVisible()
     })
 
+
     test("github check",async({page})=>{
         await page.goto("https://automationexercise.com/")
         await expect(page.locator("//a[normalize-space()='Home']")).toBeVisible()
