@@ -8,7 +8,7 @@ test.describe('verify the automation',()=>{
      Testcases=new playwright(page)
     })
 
-    test.skip("Register User",async({page})=>{
+    test.only("Register User",async({page})=>{
         await Testcases.Homepage("https://automationexercise.com/login")
         await Testcases.RegisterUser();
 
