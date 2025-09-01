@@ -8,13 +8,9 @@ test.describe('verify the automation',()=>{
      Testcases=new playwright(page)
     })
 
-    test.only("Register User",async({page})=>{
+    test("Register User",async({page})=>{
         await Testcases.Homepage("https://automationexercise.com/login")
         await Testcases.RegisterUser();
-
-
-
-
     })
 
     test("Login User with correct",async({page})=>{
@@ -53,7 +49,8 @@ test.describe('verify the automation',()=>{
         await expect(page.locator("//a[normalize-space()='Home']")).toBeVisible()
     })
 
-      test("playwright test cases",async({page})=>{
+
+    test("github check",async({page})=>{
         await page.goto("https://automationexercise.com/")
         await expect(page.locator("//a[normalize-space()='Home']")).toBeVisible()
     })
