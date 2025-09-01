@@ -53,6 +53,11 @@ test.describe('verify the automation',()=>{
         await expect(page.locator("//a[normalize-space()='Home']")).toBeVisible()
     })
 
+      test("playwright test cases",async({page})=>{
+        await page.goto("https://automationexercise.com/")
+        await expect(page.locator("//a[normalize-space()='Home']")).toBeVisible()
+    })
+
 
 })
 
