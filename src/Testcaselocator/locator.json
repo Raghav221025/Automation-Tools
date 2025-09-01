@@ -1,0 +1,33 @@
+{
+    "Homepage":"//a[normalize-space()='Home']",
+    "Click":"//a[normalize-space()='Signup / Login']",
+    "NewuserSignup":"//h2[normalize-space()='New User Signup!']",
+    "signup":"//button[normalize-space()='Signup']",
+    "Name":"//input[@placeholder='Name']",
+    "Email":"//input[@data-qa='signup-email']",
+    "AccountInformation":"//b[normalize-space()='Enter Account Information']",
+    "Genderclick":"//label[normalize-space()='Mr.']",
+    "Password":"//input[@id='password']",
+    "Days":"//select[@id='days']",
+    "Months":"//select[@id='months']",
+    "Years":"//select[@id='years']",
+    "Firstname":"//input[@id='first_name']",
+    "Lastname":"//input[@id='last_name']",
+    "Address":"//input[@id='address1']",
+    "Country":"//select[@id='country']",
+    "State":"//input[@id='state']",
+    "City":"//input[@id='city']",
+    "Zipcode":"//input[@id='zipcode']",
+    "Mobilenumber":"//input[@id='mobile_number']",
+    "CreateAccount":"//button[normalize-space()='Create Account']",
+    "ClickCreatedAccount":"//b[normalize-space()='Account Created!']",
+    "ClickContinue":"//a[normalize-space()='Continue']",
+    "VerifyUsername":"//li[10]//a[1]",
+    "ClickDeleteAccount":"//a[normalize-space()='Delete Account']",
+    "VerifyDeleteAccount":"//b[normalize-space()='Account Deleted!']",
+    "ContinueClick":"//a[normalize-space()='Continue']"
+
+}
+
+
+
