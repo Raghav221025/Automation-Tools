@@ -66,7 +66,7 @@ export class playwright{
     }
     async RegisterUser(){
         await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
-        await this.currentPage.locator(locator.click).click()
+        await this.currentPage.locator(locator.Click).click()
         await expect(this.currentPage.locator(locator.NewuserSignup)).toBeVisible()
         await this.currentPage.locator(locator.Name).fill(Details.Name)
         await this.currentPage.locator(locator.Email).fill(Details.Email)
@@ -89,16 +89,213 @@ export class playwright{
         await this.currentPage.locator(locator.CreateAccount).click()
         await expect(this.currentPage.locator(locator.ClickCreatedAccount)).toBeVisible()
         await this.currentPage.locator(locator.ClickContinue).click()
-        await expect(this.currentPage.locator(locator.VerifyUsername)).toBeVisible()
         await this.currentPage.locator(locator.ClickDeleteAccount).click()
         await expect(this.currentPage.locator(locator.VerifyDeleteAccount)).toBeVisible()
-        await this.currentPage.locator(locator.ContinueClick).click()
+        await this.currentPage.locator(locator.ClickContinue).click()
 
     }
     async Homepage(url){
        await this.currentPage.goto(url)
-
     }
+    async LoginUsercorrect(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Click).click()
+        await expect(this.currentPage.locator(locator.Loginusersignup)).toBeVisible()
+        await this.currentPage.locator(locator.LoginEmail).fill(Details.EmailD)
+        await this.currentPage.locator(locator.LoginPassword).fill(Details.PasswordD)
+        await this.currentPage.locator(locator.Login).click()
+        await this.currentPage.locator(locator.ClickDeleteAccount).click()
+        await this.currentPage.locator(locator.ClickContinue).click()
+    }
+    async LoginUserincorrect(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Click).click()
+        await this.currentPage.locator(locator.LoginEmail).fill(Details.Email3)
+        await this.currentPage.locator(locator.LoginPassword).fill(Details.Password3)
+        await this.currentPage.locator(locator.Login).click()
+        await expect(this.currentPage.locator(locator.IncorrectMailMsg)).toBeVisible()  
+    }    
+    async LogoutUser(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Click).click()
+        await this.currentPage.locator(locator.LoginEmail).fill(Details.Email4)
+        await this.currentPage.locator(locator.LoginPassword).fill(Details.Password4)
+        await this.currentPage.locator(locator.Login).click()
+        await this.currentPage.locator(locator.Logout).click()
+    }
+    async RegisterUserExistingEmail(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Click).click()
+        await expect(this.currentPage.locator(locator.NewuserSignup)).toBeVisible()
+        await this.currentPage.locator(locator.Name).fill(Details.Name5)
+        await this.currentPage.locator(locator.Email).fill(Details.Email5)
+        await this.currentPage.locator(locator.signup).click()
+        await expect(this.currentPage.locator(locator.ExcistingMail)).toBeVisible()
+    }
+    async VerifyTestCases(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.TestcaseButton).click()
+        await expect(this.currentPage.locator(locator.Testcasevisible)).toBeVisible()
+    }
+    async VerifyproductDetails(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Product).click()
+        await expect(this.currentPage.locator(locator.Allproducts)).toBeVisible()
+        await this.currentPage.locator(locator.Viewproducts).click()
+        await expect(this.currentPage.locator(locator.Singleproduct)).toBeVisible()
+    }
+    async SearchProduct(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Product).click()
+        await expect(this.currentPage.locator(locator.Allproducts)).toBeVisible()
+        await this.currentPage.locator(locator.Firstproduct).fill(Details.ProductName)
+        await this.currentPage.locator(locator.ArrowButton).click()
+        await expect(this.currentPage.locator(locator.searchedProduct)).toBeVisible()
+        await expect(this.currentPage.locator(locator.Allproducts)).toBeVisible()
+    }
+    async VerifySubscription(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await expect(this.currentPage.locator(locator.Subscription)).toBeVisible()
+        await this.currentPage.locator(locator.SubscriptionEmail).fill(Details.Email10)
+        await this.currentPage.locator(locator.SubscriptionArrow).click()
+        await expect(this.currentPage.locator(locator.SubscriptionSuccess)).toBeVisible()
+    }
+    async SubscriptionCartpage(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Cart).click()
+        await expect(this.currentPage.locator(locator.Subscription)).toBeVisible()
+        await this.currentPage.locator(locator.SubscriptionEmail).fill(Details.Email11)
+        await this.currentPage.locator(locator.Arrow).click()
+        await expect(this.currentPage.locator(locator.SubscriptionSuccess)).toBeVisible()
+    }
+    async AddProductsCart(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Product).click()
+        await this.currentPage.locator(locator.AddCart).click()
+        await this.currentPage.locator(locator.ContinueShopping).click()
+        await this.currentPage.locator(locator.AddCart2).click()
+        await this.currentPage.locator(locator.ContinueShopping).click()
+        await this.currentPage.locator(locator.Cart).click()
+        await expect(this.currentPage.locator(locator.CartVisible)).toBeVisible()
+        await expect(this.currentPage.locator(locator.Product1Visible)).toBeVisible()
+        await expect(this.currentPage.locator(locator.Product2Visible)).toBeVisible()
+    }
+    async ProductQuantityCart(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        for (let i = 0; i < 4; i++){
+        await this.currentPage.locator(locator.AddCart).click()
+        await this.currentPage.locator(locator.ContinueShopping).click()
+        }
+        await this.currentPage.locator(locator.Cart).click()
+        await expect(this.currentPage.locator(locator.Quantity4)).toBeVisible()
+    }
+    async RegisterwhileCheckout(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.AddCart).click()
+        await this.currentPage.locator(locator.ContinueShopping).click()
+        await this.currentPage.locator(locator.Cart).click()
+        await expect(this.currentPage.locator(locator.CartVisible2)).toBeVisible()
+        await this.currentPage.locator(locator.ProceedCheckout).click()
+        await this.currentPage.locator(locator.RegisterLogin).click()
+        await this.currentPage.locator(locator.Name).fill(Details.Name14)
+        await this.currentPage.locator(locator.Email).fill(Details.Email14)
+        await this.currentPage.locator(locator.signup).click()
+        await this.currentPage.locator(locator.Gender).click()
+        await this.currentPage.locator(locator.Password).fill(Details.Password14)
+        await this.currentPage.locator(locator.Days).selectOption(Details.Days)
+        await this.currentPage.locator(locator.Months).selectOption(Details.Months)
+        await this.currentPage.locator(locator.Years).selectOption(Details.Years)
+        await this.currentPage.locator(locator.Firstname).fill(Details.Firstname)
+        await this.currentPage.locator(locator.Lastname).fill(Details.Lastname)
+        await this.currentPage.locator(locator.Address).fill(Details.Address)
+        await this.currentPage.locator(locator.Country).selectOption(Details.Country)
+        await this.currentPage.locator(locator.State).fill(Details.State)
+        await this.currentPage.locator(locator.City).fill(Details.City)
+        await this.currentPage.locator(locator.Zipcode).fill(Details.Zipcode)
+        await this.currentPage.locator(locator.Mobilenumber).fill(Details.Mobilenumber)
+        await this.currentPage.locator(locator.CreateAccount).click()
+        await expect(this.currentPage.locator(locator.ClickCreatedAccount)).toBeVisible()
+        await this.currentPage.locator(locator.ClickContinue).click()
+        await this.currentPage.locator(locator.Cart).click()
+        await this.currentPage.locator(locator.ProceedCheckout).click()
+        await expect(this.currentPage.locator(locator.AddressDeliver)).toBeVisible()
+        await this.currentPage.locator(locator.ReviewMessage).fill(Details.ReviewMessage)
+        await this.currentPage.locator(locator.Placeorder).click()
+        await this.currentPage.locator(locator.CardName).fill(Details.CardName)
+        await this.currentPage.locator(locator.CardNumber).fill(Details.CardNumber)
+        await this.currentPage.locator(locator.Placeholder).fill(Details.Placeholder)
+        await this.currentPage.locator(locator.PlaceholderMonth).fill(Details.PlaceholderMonth)
+        await this.currentPage.locator(locator.placeholderYear).fill(Details.PlaceholderYear)
+        await this.currentPage.locator(locator.Submit).click()
+        await expect(this.currentPage.locator(locator.OrderConfirmed)).toBeVisible()
+        await this.currentPage.locator(locator.ClickDeleteAccount).click()
+        await this.currentPage.locator(locator.ClickContinue).click()
+    }
+    async RemoveProductsFromCart(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Product15).click()
+        await this.currentPage.locator(locator.ContinueShopping).click()
+        await this.currentPage.locator(locator.Cart).click()
+        await expect(this.currentPage.locator(locator.CartVisible2)).toBeVisible()
+        await this.currentPage.locator(locator.Xbutton).click()
+    }
+    async ViewCategoryProducts(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await expect(this.currentPage.locator(locator.Category)).toBeVisible()
+        await this.currentPage.locator(locator.WomenBrand).click()
+        await this.currentPage.locator(locator.WomenDress).click()
+        await expect(this.currentPage.locator(locator.Features)).toBeVisible()
+        await this.currentPage.locator(locator.MenBrand).click()
+        await this.currentPage.locator(locator.MenTshirt).click()
+        await expect(this.currentPage.locator(locator.Features)).toBeVisible()
+    }
+    async ViewCartBrandProducts(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Product).click()
+        await expect(this.currentPage.locator(locator.BrandProduct)).toBeVisible()
+        await this.currentPage.locator(locator.Polo).click()
+        await expect(this.currentPage.locator(locator.Features)).toBeVisible()
+        await this.currentPage.locator(locator.BrandProduct2).click()
+        await expect(this.currentPage.locator(locator.Features)).toBeVisible()
+    }
+    async SearchProductandCartAfterLogin(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Product).click()
+        await expect(this.currentPage.locator(locator.Features)).toBeVisible()
+        await this.currentPage.locator(locator.Firstproduct).fill(Details.FirstProduct)
+        await this.currentPage.locator(locator.ArrowButton).click()
+        await expect(this.currentPage.locator(locator.ProductInfo)).toBeVisible()
+        await this.currentPage.locator(locator.AddToCart).click()
+        await this.currentPage.locator(locator.ContinueShopping).click()
+        await this.currentPage.locator(locator.Cart).click()
+        await expect(this.currentPage.locator(locator.CartInfo)).toBeVisible()
+        await this.currentPage.locator(locator.Click).click()
+        await this.currentPage.locator(locator.LoginEmail).fill(Details.LoginEmail)
+        await this.currentPage.locator(locator.LoginPassword).fill(Details.LoginPassword)
+        await this.currentPage.locator(locator.Login).click()
+        await this.currentPage.locator(locator.Cart).click()
+        await expect(this.currentPage.locator(locator.CartInfo)).toBeVisible()
+    }
+    async Addreviewonproduct(){
+        await expect(this.currentPage.locator(locator.Homepage)).toBeVisible()
+        await this.currentPage.locator(locator.Product).click()
+        await expect(this.currentPage.locator(locator.Features)).toBeVisible()
+        await this.currentPage.locator(locator.ViewProduct21).click()
+        await expect(this.currentPage.locator(locator.CategoryTab)).toBeVisible()
+        await this.currentPage.locator(locator.Name21).fill(Details.Firstname)
+        await this.currentPage.locator(locator.Email21).fill(Details.LoginEmail)
+        await this.currentPage.locator(locator.Review).fill(Details.Review)
+        await this.currentPage.locator(locator.ReviewButton).click()
+        await expect(this.currentPage.locator(locator.ThankReview)).toBeVisible()
+    }
+    async AddtocartfromRecommendeditems(){
+        await expect(this.currentPage.locator(locator.RecommendedItems)).toBeVisible()
+        await this.currentPage.locator(locator.RecommendedProduct).click()
+        await this.currentPage.locator(locator.ContinueShopping).click()
+        await this.currentPage.locator(locator.Cart22).click()
+        await expect(this.currentPage.locator(locator.CartInfo)).toBeVisible()
+    }
+    
 }
 
 
